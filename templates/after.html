@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff; /* Changed background to white */
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .result {
+            font-size: 24px;
+            color: #fff;
+            background-color: #000000; /* Changed result box background to black */
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .excellent {
+            color: #4CAF50; /* Green for Excellent */
+            font-weight: bold;
+        }
+
+        .poor {
+            color: #FF5722; /* Orange-Red for Poor */
+            font-weight: bold;
+        }
+        
+        .result p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #ddd;
+        }
+
+        /* Button Container */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        /* Button Styling */
+        .predict-again-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none; /* Ensures button looks like a button, not a link */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .predict-again-btn:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="result">
+        <h1>Wine Quality Prediction: 
+            <span class="{% if prediction == 'Pass' %}excellent{% else %}poor{% endif %}">
+                {% if prediction == 'Pass' %}
+                    Excellent Quality
+                {% else %}
+                    Poor Quality
+                {% endif %}
+            </span>
+        </h1>
+        <p>Thank you for using our service!</p>
+    </div>
+
+    <!-- Button to predict another sample -->
+    <div class="button-container">
+        <a href="{{ url_for('man') }}" class="predict-again-btn">Predict Another Sample</a>
+    </div>
+</body>
+</html>

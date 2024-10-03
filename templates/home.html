@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        background-color: #ffffff; /* White background */
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        gap: 100px; /* Space between image and form */
+        padding: 0 50px;
+      }
+
+      form {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        width: 600px; /* Form width */
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      h1 {
+        color: #4a2f59;
+        font-size: 42px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        white-space: nowrap; /* Prevents title from breaking into multiple lines */
+      }
+
+      .input-group {
+        display: flex; /* Flexbox layout for inputs */
+        justify-content: space-between; /* Space between inputs */
+        margin: 12px 0; /* Margin between input groups */
+        align-items: center; /* Center items vertically */
+      }
+
+      .input-label {
+        flex: 1; /* Label takes equal space */
+        margin-right: 10px; /* Space between label and input */
+        text-align: right; /* Align label to the right */
+      }
+
+      input[type="text"] {
+        flex: 2; /* Allow inputs to grow */
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 18px;
+      }
+
+      input[type="submit"] {
+        background-color: #8b3a62;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #732b51;
+      }
+
+      .wine-image {
+        width: 400px;  /* Image width */
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <!-- Left side: Image -->
+      <img src='static/wine-bottles.jpg' alt="Wine Bottles" class="wine-image">
+
+      <!-- Right side: Form with title inside -->
+      <form method="POST" action="{{url_for('home')}}">
+
+        <h1>WINE QUALITY PREDICTION</h1>
+
+        <!-- Input groups in a single line -->
+        <div class="input-group">
+          <label class="input-label">Enter sulphates:</label>
+          <input type="text" name="a" placeholder="Enter">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Enter fixed acidity:</label>
+          <input type="text" name="b" placeholder="Enter">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Enter total sulfur dioxide:</label>
+          <input type="text" name="c" placeholder="Enter">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Enter chlorides:</label>
+          <input type="text" name="d" placeholder="Enter">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Enter residual sugar:</label>
+          <input type="text" name="e" placeholder="Enter ">
+        </div>
+
+        <input type="submit" value="Predict Wine Quality">
+
+        <!-- Display the prediction result -->
+        {% if prediction %}
+          <div class="result">Prediction: {{ prediction }}</div>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>
